@@ -48,9 +48,11 @@ public class FriendCircleMainAdapter extends RecyclerView.Adapter<RecyclerView.V
     public interface OnItemPicationClickListener {
         void onItemClick(int firstPosition, int secondPosition, ViewGroup gridview);
     }
+
     public void setOnItemPicationClickListener(OnItemPicationClickListener onItemPicationClickListener) {
         this.onItemPicationClickListener = onItemPicationClickListener;
     }
+
     //评论回复点击
     public interface OnItemCommentClickListener {
         void onItemClick(int firstPosition, int secondPosition);
@@ -86,7 +88,7 @@ public class FriendCircleMainAdapter extends RecyclerView.Adapter<RecyclerView.V
         GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext, 3);
         itemHolder.rvPictureAdapterMainCircle.setLayoutManager(gridLayoutManager);
         //设置图片适配器
-        pictureCircleAdapter = new PictureCircleAdapter(mContext,list.get(position).getDesc().getContentObject().getMediaList().getMedia());
+        pictureCircleAdapter = new PictureCircleAdapter(mContext, list.get(position).getDesc().getContentObject().getMediaList().getMedia());
         itemHolder.rvPictureAdapterMainCircle.setAdapter(pictureCircleAdapter);
         pictureCircleAdapter.setOnItemClickListener(secondPosition -> {
             onItemPicationClickListener.onItemClick(position, secondPosition, itemHolder.rvPictureAdapterMainCircle);
@@ -96,10 +98,10 @@ public class FriendCircleMainAdapter extends RecyclerView.Adapter<RecyclerView.V
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
         itemHolder.rvCommentAdapterMainCircle.setLayoutManager(linearLayoutManager);
         //设置评论适配器
-        commentCircleAdapter = new CommentCircleAdapter(mContext,list.get(position).getComment());
+        commentCircleAdapter = new CommentCircleAdapter(mContext, list.get(position).getComment());
         itemHolder.rvCommentAdapterMainCircle.setAdapter(commentCircleAdapter);
         commentCircleAdapter.setOnItemClickListener(commentPosition -> { //回复评论点击事件
-            onItemCommentClickListener.onItemClick(position,commentPosition);
+            onItemCommentClickListener.onItemClick(position, commentPosition);
         });
 
         //设置点赞，评论点击事件
@@ -113,7 +115,7 @@ public class FriendCircleMainAdapter extends RecyclerView.Adapter<RecyclerView.V
 
     @Override
     public int getItemCount() {
-        return 10;
+        return list == null ? 0 : list.size();
     }
 
     class ItemHolder extends RecyclerView.ViewHolder {
