@@ -59,7 +59,7 @@ public class CommentCircleAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     @Override
     public int getItemCount() {
-        return list == null ? 0 : list.size();
+        return 9;
     }
 
     class ItemHolder extends RecyclerView.ViewHolder {
@@ -72,16 +72,16 @@ public class CommentCircleAdapter extends RecyclerView.Adapter<RecyclerView.View
         }
 
         private void initData(int position) {
-            FriendListBean.BodyBean.DataBean.CommentBean commentBean = list.get(position);
+//            FriendListBean.BodyBean.DataBean.CommentBean commentBean = list.get(position);
             //评论点击事件的回调，回复评论
             if (onItemClickListener != null) {
                 itemView.setOnClickListener(v -> onItemClickListener.onItemClick(position));
             }
-            if (commentBean.getReply_id().equals("0")) {//正常评论
-                tvCommentAdapterCircle.setText(commentBean.getNick_name() + ":" + commentBean.getContent());
-            } else {//回复评论
-                tvCommentAdapterCircle.setText(commentBean.getNick_name() + " 回复" + commentBean.getReply_user_name() + ":" + commentBean.getContent());
-            }
+//            if (commentBean.getReply_id().equals("0")) {//正常评论
+//                tvCommentAdapterCircle.setText(commentBean.getNick_name() + ":" + commentBean.getContent());
+//            } else {//回复评论
+//                tvCommentAdapterCircle.setText(commentBean.getNick_name() + " 回复" + commentBean.getReply_user_name() + ":" + commentBean.getContent());
+//            }
 
         }
 

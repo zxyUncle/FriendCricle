@@ -67,16 +67,28 @@ public class FriendCircleActivity extends AppCompatActivity {
      * 图片浏览点击事件
      */
     public void onClickPictureRecyclerView() {
+        List<String> listPicture1 = new ArrayList<>();
+        String img = "https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1573388550722&amp;di=a545f3338eec6b45e79a9b62d25869fa&amp;imgtype=0&amp;src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F1%2F58ad3abfe15c0.jpg";
+        listPicture1.add(img);
+        listPicture1.add(img);
+        listPicture1.add(img);
+        listPicture1.add(img);
+        listPicture1.add(img);
+        listPicture1.add(img);
+        listPicture1.add(img);
+        listPicture1.add(img);
+        listPicture1.add(img);
+        listPicture1.add(img);
         //图片点击事件
         friendCircleAdapter.setOnItemPicationClickListener((firstPosition, secondPosition, gridview) -> {
-            List<String> listPicture = new ArrayList<>();
+//            List<String> listPicture = new ArrayList<>();
             //因为图片放大只能传入List<String>，所以需要将getMedia对象里面的图片遍历出来
-            for (int i = 0; i < list.get(firstPosition).getDesc().getContentObject().getMediaList().getMedia().size(); i++) {
-                listPicture.add(list.get(firstPosition).getDesc().getContentObject().getMediaList().getMedia().get(secondPosition).getUrl());
-            }
+//            for (int i = 0; i < list.get(firstPosition).getDesc().getContentObject().getMediaList().getMedia().size(); i++) {
+//                listPicture1.add(list.get(firstPosition).getDesc().getContentObject().getMediaList().getMedia().get(secondPosition).getUrl());
+//            }
 
             ivMainimageViewer.overlayStatusBar(true) // ImageViewer 是否会占据 StatusBar 的空间
-                    .imageData(listPicture) // 图片数据
+                    .imageData(listPicture1) // 图片数据
                     .bindViewGroup(gridview) // 目标 viewGroup，例如类似朋友圈中的九宫格控件
                     .imageLoader(new PhotoLoader()) // 设置图片加载方式
                     .playEnterAnim(true) // 是否开启进场动画，默认为true

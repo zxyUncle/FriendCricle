@@ -58,7 +58,7 @@ public class PictureCircleAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     @Override
     public int getItemCount() {
-       return  mediaList==null?0:mediaList.size();
+       return  9;
     }
 
     class ItemHolder extends RecyclerView.ViewHolder {
@@ -75,8 +75,8 @@ public class PictureCircleAdapter extends RecyclerView.Adapter<RecyclerView.View
             if (onItemClickListener != null) {
                 itemView.setOnClickListener(v -> onItemClickListener.onItemClick(position));
             }
-//            Glide.with(mContext).load("https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1573388550722&amp;di=a545f3338eec6b45e79a9b62d25869fa&amp;imgtype=0&amp;src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F1%2F58ad3abfe15c0.jpg").into(ivPictureAdapterCircle);
-            Glide.with(mContext).load(mediaList.get(position).getThumb()).into(ivPictureAdapterCircle);
+            Glide.with(mContext).load("https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1573388550722&amp;di=a545f3338eec6b45e79a9b62d25869fa&amp;imgtype=0&amp;src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F1%2F58ad3abfe15c0.jpg").into(ivPictureAdapterCircle);
+//            Glide.with(mContext).load(mediaList.get(position).getThumb()).into(ivPictureAdapterCircle);
         }
 
     }

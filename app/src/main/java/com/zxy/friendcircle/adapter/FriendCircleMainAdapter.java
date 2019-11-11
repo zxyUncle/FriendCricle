@@ -75,20 +75,20 @@ public class FriendCircleMainAdapter extends RecyclerView.Adapter<RecyclerView.V
     }
 
     private void initData(ItemHolder itemHolder, int position) {
-        FriendListBean.BodyBean.DataBean dataBean = list.get(position);
-        //设置姓名
-        itemHolder.tvNameMainCircle.setText(dataBean.getNickName());
-        //设置内容
-        itemHolder.tvContentMainCircle.setText(dataBean.getDesc().getContentDesc());
-        //设置时间
-        String time = TimeUitls.timeStamp2Date(Long.parseLong(dataBean.getDesc().getCreateTime()), null);
-        itemHolder.tvTimeAdapterMainCircle.setText(time);
+//        FriendListBean.BodyBean.DataBean dataBean = list.get(position);
+//        //设置姓名
+//        itemHolder.tvNameMainCircle.setText(dataBean.getNickName());
+//        //设置内容
+//        itemHolder.tvContentMainCircle.setText(dataBean.getDesc().getContentDesc());
+//        //设置时间
+//        String time = TimeUitls.timeStamp2Date(Long.parseLong(dataBean.getDesc().getCreateTime()), null);
+//        itemHolder.tvTimeAdapterMainCircle.setText(time);
 
         //设置图片GridLayoutManager布局管理器
         GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext, 3);
         itemHolder.rvPictureAdapterMainCircle.setLayoutManager(gridLayoutManager);
         //设置图片适配器
-        pictureCircleAdapter = new PictureCircleAdapter(mContext, list.get(position).getDesc().getContentObject().getMediaList().getMedia());
+        pictureCircleAdapter = new PictureCircleAdapter(mContext, null);
         itemHolder.rvPictureAdapterMainCircle.setAdapter(pictureCircleAdapter);
         pictureCircleAdapter.setOnItemClickListener(secondPosition -> {
             onItemPicationClickListener.onItemClick(position, secondPosition, itemHolder.rvPictureAdapterMainCircle);
@@ -98,7 +98,7 @@ public class FriendCircleMainAdapter extends RecyclerView.Adapter<RecyclerView.V
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
         itemHolder.rvCommentAdapterMainCircle.setLayoutManager(linearLayoutManager);
         //设置评论适配器
-        commentCircleAdapter = new CommentCircleAdapter(mContext, list.get(position).getComment());
+        commentCircleAdapter = new CommentCircleAdapter(mContext,null);
         itemHolder.rvCommentAdapterMainCircle.setAdapter(commentCircleAdapter);
         commentCircleAdapter.setOnItemClickListener(commentPosition -> { //回复评论点击事件
             onItemCommentClickListener.onItemClick(position, commentPosition);
@@ -115,7 +115,7 @@ public class FriendCircleMainAdapter extends RecyclerView.Adapter<RecyclerView.V
 
     @Override
     public int getItemCount() {
-        return list == null ? 0 : list.size();
+        return 9;
     }
 
     class ItemHolder extends RecyclerView.ViewHolder {
