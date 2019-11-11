@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tvCommentAdapterCircle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="张三:回家吃饭了,吃完饭就洗澡了，洗完早就睡觉了"
+        android:textColor="@color/base_666666"
+        android:textSize="@dimen/sp_16" />
+
+</LinearLayout>
