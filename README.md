@@ -1,1 +1,2 @@
-FriendCricle
+# master分支是数据源
+# 1.0分支是效果图分支
