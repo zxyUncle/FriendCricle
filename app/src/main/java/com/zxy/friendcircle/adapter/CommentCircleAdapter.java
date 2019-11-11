@@ -11,6 +11,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.zxy.friendcircle.R;
+import com.zxy.friendcircle.bean.FriendListBean;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,9 +29,11 @@ public class CommentCircleAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     private Context mContext;
     private OnItemClickListener onItemClickListener;
+    private List<FriendListBean.BodyBean.DataBean.CommentBean> list;
 
-    public CommentCircleAdapter(Context mContext) {
+    public CommentCircleAdapter(Context mContext, List<FriendListBean.BodyBean.DataBean.CommentBean> list) {
         this.mContext = mContext;
+        this.list = list;
     }
 
     //点击事件
@@ -54,7 +59,7 @@ public class CommentCircleAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     @Override
     public int getItemCount() {
-        return 9;
+        return list == null ? 0 : list.size();
     }
 
     class ItemHolder extends RecyclerView.ViewHolder {
@@ -67,10 +72,17 @@ public class CommentCircleAdapter extends RecyclerView.Adapter<RecyclerView.View
         }
 
         private void initData(int position) {
-            //评论点击事件的回调
+            FriendListBean.BodyBean.DataBean.CommentBean commentBean = list.get(position);
+            //评论点击事件的回调，回复评论
             if (onItemClickListener != null) {
                 itemView.setOnClickListener(v -> onItemClickListener.onItemClick(position));
             }
+            if (commentBean.getReply_id().equals("0")) {//正常评论
+                tvCommentAdapterCircle.setText(commentBean.getNick_name() + ":" + commentBean.getContent());
+            } else {//回复评论
+                tvCommentAdapterCircle.setText(commentBean.getNick_name() + " 回复" + commentBean.getReply_user_name() + ":" + commentBean.getContent());
+            }
+
         }
 
     }

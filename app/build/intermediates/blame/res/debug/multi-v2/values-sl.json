@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\Android\\workspace_demo\\FriendCircle\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sl\\values-sl.xml",
+            "outputFile": "E:\\Android\\workspace_demo\\FriendCricle\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sl\\values-sl.xml",
             "map": [
                 {
                     "source": "C:\\Users\\hp\\.gradle\\caches\\transforms-2\\files-2.1\\86a5e87a5438a97f6290f3a792cbf691\\appcompat-v7-28.0.0\\res\\values-sl\\values-sl.xml",

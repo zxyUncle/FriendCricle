@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\Android\\workspace_demo\\FriendCircle\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v23\\values-v23.xml",
+            "outputFile": "E:\\Android\\workspace_demo\\FriendCricle\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v23\\values-v23.xml",
             "map": [
                 {
                     "source": "C:\\Users\\hp\\.gradle\\caches\\transforms-2\\files-2.1\\2f84e0ae565d98b05b2f5e9ced9bbc1e\\cardview-v7-28.0.0\\res\\values-v23\\values-v23.xml",

@@ -13,7 +13,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.zxy.friendcircle.R;
+import com.zxy.friendcircle.bean.FriendListBean;
+import com.zxy.friendcircle.utils.TimeUitls;
 import com.zxy.friendcircle.utils.comminput.InputTextMsgDialog;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,9 +37,11 @@ public class FriendCircleMainAdapter extends RecyclerView.Adapter<RecyclerView.V
     private PictureCircleAdapter pictureCircleAdapter;
     //设置评论适配器
     CommentCircleAdapter commentCircleAdapter;
+    private List<FriendListBean.BodyBean.DataBean> list;//数据源
 
-    public FriendCircleMainAdapter(Context mContext) {
+    public FriendCircleMainAdapter(Context mContext, List<FriendListBean.BodyBean.DataBean> list) {
         this.mContext = mContext;
+        this.list = list;
     }
 
     //图片点击放大
@@ -67,11 +73,20 @@ public class FriendCircleMainAdapter extends RecyclerView.Adapter<RecyclerView.V
     }
 
     private void initData(ItemHolder itemHolder, int position) {
+        FriendListBean.BodyBean.DataBean dataBean = list.get(position);
+        //设置姓名
+        itemHolder.tvNameMainCircle.setText(dataBean.getNickName());
+        //设置内容
+        itemHolder.tvContentMainCircle.setText(dataBean.getDesc().getContentDesc());
+        //设置时间
+        String time = TimeUitls.timeStamp2Date(Long.parseLong(dataBean.getDesc().getCreateTime()), null);
+        itemHolder.tvTimeAdapterMainCircle.setText(time);
+
         //设置图片GridLayoutManager布局管理器
         GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext, 3);
         itemHolder.rvPictureAdapterMainCircle.setLayoutManager(gridLayoutManager);
         //设置图片适配器
-        pictureCircleAdapter = new PictureCircleAdapter(mContext);
+        pictureCircleAdapter = new PictureCircleAdapter(mContext,list.get(position).getDesc().getContentObject().getMediaList().getMedia());
         itemHolder.rvPictureAdapterMainCircle.setAdapter(pictureCircleAdapter);
         pictureCircleAdapter.setOnItemClickListener(secondPosition -> {
             onItemPicationClickListener.onItemClick(position, secondPosition, itemHolder.rvPictureAdapterMainCircle);
@@ -81,7 +96,7 @@ public class FriendCircleMainAdapter extends RecyclerView.Adapter<RecyclerView.V
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
         itemHolder.rvCommentAdapterMainCircle.setLayoutManager(linearLayoutManager);
         //设置评论适配器
-        commentCircleAdapter = new CommentCircleAdapter(mContext);
+        commentCircleAdapter = new CommentCircleAdapter(mContext,list.get(position).getComment());
         itemHolder.rvCommentAdapterMainCircle.setAdapter(commentCircleAdapter);
         commentCircleAdapter.setOnItemClickListener(commentPosition -> { //回复评论点击事件
             onItemCommentClickListener.onItemClick(position,commentPosition);

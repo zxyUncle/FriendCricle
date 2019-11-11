@@ -198,7 +198,7 @@ public class FriendListBean implements Serializable {
             private String description;
             private String id;
             private DescBean desc;
-            private Object comment;
+            private List<CommentBean> comment;
             private int commentCount;
             private int likeCount;
             private int withUserCount;
@@ -244,11 +244,11 @@ public class FriendListBean implements Serializable {
                 this.desc = desc;
             }
 
-            public Object getComment() {
+            public List<CommentBean> getComment() {
                 return comment;
             }
 
-            public void setComment(Object comment) {
+            public void setComment(List<CommentBean> comment) {
                 this.comment = comment;
             }
 
@@ -282,6 +282,73 @@ public class FriendListBean implements Serializable {
 
             public void setNickName(String nickName) {
                 this.nickName = nickName;
+            }
+
+
+            public static class CommentBean implements Serializable {
+                private String create_time;
+                private String reply_id;
+                private String user_name;
+                private String nick_name;
+                private String reply_user_name;
+                private String id;
+                private String content;
+
+                public String getCreate_time() {
+                    return create_time;
+                }
+
+                public void setCreate_time(String create_time) {
+                    this.create_time = create_time;
+                }
+
+                public String getReply_id() {
+                    return reply_id;
+                }
+
+                public void setReply_id(String reply_id) {
+                    this.reply_id = reply_id;
+                }
+
+                public String getUser_name() {
+                    return user_name;
+                }
+
+                public void setUser_name(String user_name) {
+                    this.user_name = user_name;
+                }
+
+                public String getNick_name() {
+                    return nick_name;
+                }
+
+                public void setNick_name(String nick_name) {
+                    this.nick_name = nick_name;
+                }
+
+                public String getReply_user_name() {
+                    return reply_user_name;
+                }
+
+                public void setReply_user_name(String reply_user_name) {
+                    this.reply_user_name = reply_user_name;
+                }
+
+                public String getId() {
+                    return id;
+                }
+
+                public void setId(String id) {
+                    this.id = id;
+                }
+
+                public String getContent() {
+                    return content;
+                }
+
+                public void setContent(String content) {
+                    this.content = content;
+                }
             }
 
             public static class DescBean implements Serializable{
@@ -475,13 +542,61 @@ public class FriendListBean implements Serializable {
                          * media : null
                          */
 
-                        private Object media;
+                        private List<Media> media;
 
-                        public Object getMedia() {
+                        public static class Media implements Serializable {
+                            private String type;
+                            private String id;
+                            private String url;
+                            private String thumb;
+                            private String size;
+
+                            public String getType() {
+                                return type;
+                            }
+
+                            public void setType(String type) {
+                                this.type = type;
+                            }
+
+                            public String getId() {
+                                return id;
+                            }
+
+                            public void setId(String id) {
+                                this.id = id;
+                            }
+
+                            public String getUrl() {
+                                return url;
+                            }
+
+                            public void setUrl(String url) {
+                                this.url = url;
+                            }
+
+                            public String getThumb() {
+                                return thumb;
+                            }
+
+                            public void setThumb(String thumb) {
+                                this.thumb = thumb;
+                            }
+
+                            public String getSize() {
+                                return size;
+                            }
+
+                            public void setSize(String size) {
+                                this.size = size;
+                            }
+                        }
+
+                        public List<Media> getMedia() {
                             return media;
                         }
 
-                        public void setMedia(Object media) {
+                        public void setMedia(List<Media> media) {
                             this.media = media;
                         }
                     }

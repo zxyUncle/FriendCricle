@@ -11,6 +11,9 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.zxy.friendcircle.R;
+import com.zxy.friendcircle.bean.FriendListBean;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,9 +28,11 @@ public class PictureCircleAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     private Context mContext;
     private OnItemClickListener onItemClickListener;
+    private List<FriendListBean.BodyBean.DataBean.DescBean.ContentObjectBean.MediaListBean.Media> mediaList;
 
-    public PictureCircleAdapter(Context mContext) {
+    public PictureCircleAdapter(Context mContext, List<FriendListBean.BodyBean.DataBean.DescBean.ContentObjectBean.MediaListBean.Media> mediaList) {
         this.mContext = mContext;
+        this.mediaList = mediaList;
     }
 
     //点击事件
@@ -53,7 +58,7 @@ public class PictureCircleAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     @Override
     public int getItemCount() {
-        return 9;
+       return  mediaList==null?0:mediaList.size();
     }
 
     class ItemHolder extends RecyclerView.ViewHolder {
@@ -70,7 +75,8 @@ public class PictureCircleAdapter extends RecyclerView.Adapter<RecyclerView.View
             if (onItemClickListener != null) {
                 itemView.setOnClickListener(v -> onItemClickListener.onItemClick(position));
             }
-            Glide.with(mContext).load("https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1573388550722&amp;di=a545f3338eec6b45e79a9b62d25869fa&amp;imgtype=0&amp;src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F1%2F58ad3abfe15c0.jpg").into(ivPictureAdapterCircle);
+//            Glide.with(mContext).load("https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1573388550722&amp;di=a545f3338eec6b45e79a9b62d25869fa&amp;imgtype=0&amp;src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F1%2F58ad3abfe15c0.jpg").into(ivPictureAdapterCircle);
+            Glide.with(mContext).load(mediaList.get(position).getThumb()).into(ivPictureAdapterCircle);
         }
 
     }
